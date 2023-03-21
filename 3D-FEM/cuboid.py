@@ -1,5 +1,5 @@
-import taichi as ti
 import numpy as np
+import taichi as ti
 
 ti.init(arch=ti.vulkan)
 
@@ -204,12 +204,12 @@ def paint(scene: ti.ui.Scene):
     scene.mesh(
         vertices=ground_mesh_vertices,
         indices=ground_mesh_indices,
-        color=(100, 0, 0),
+        color=(1, 0, 0),
     )
     # ball
-    scene.particles(centers=ball_center, radius=ball_radius, color=(0, 100, 0))
+    scene.particles(centers=ball_center, radius=ball_radius, color=(0, 1, 0))
     # cuboid
-    scene.particles(centers=position, radius=0.002, color=(0, 0, 100))
+    scene.particles(centers=position, radius=0.002, color=(0, 0, 1))
 
 
 def main():
@@ -247,7 +247,7 @@ def main():
         camera.lookat(*camera_lookat)
         camera.up(x=0, y=0, z=1)
         scene.set_camera(camera=camera)
-        scene.point_light(pos=(5, 5, 5), color=(255, 255, 255))
+        scene.point_light(pos=(5, -1, 5), color=(1, 1, 1))
 
         if not pause:
             with ti.ad.Tape(loss=total_energy):
